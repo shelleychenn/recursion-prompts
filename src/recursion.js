@@ -51,11 +51,27 @@ var isEven = function (n) {
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-var sumBelow = function (n) {};
+var sumBelow = function (n) {
+  if (n === 0) {
+    return 0;
+  }
+
+  n = n > 0 ? n - 1 : n + 1;
+
+  return n + sumBelow(n);
+};
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
-var range = function (x, y) {};
+var range = function (x, y) {
+  if (y - x === 1 || y - x === 0) {
+    return [];
+  }
+
+  y = y > x ? y - 1 : y + 1;
+
+  return y === x ? [] : range(x, y).concat(y);
+};
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
