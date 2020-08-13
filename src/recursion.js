@@ -116,7 +116,18 @@ var reverse = function (string) {
 };
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function (string) {};
+var palindrome = function (string) {
+  if (string.length === 0 || string.length === 1) {
+    return true;
+  }
+
+  string = string.toLowerCase().split(' ').join('');
+
+  return (
+    string[0] === string[string.length - 1] &&
+    palindrome(string.slice(1, string.length - 1))
+  );
+};
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
@@ -127,7 +138,19 @@ var modulo = function (x, y) {};
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
-var multiply = function (x, y) {};
+var multiply = function (x, y) {
+  if (x === 0 || y === 0) {
+    return 0;
+  }
+
+  if (y === 1) {
+    return x;
+  }
+
+  y = y > 0 ? y - 1 : y + 1;
+
+  return y > 0 ? x + multiply(x, y) : -x + multiply(x, y);
+};
 
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods to arrive at an approximate quotient (ignore decimal endings).
